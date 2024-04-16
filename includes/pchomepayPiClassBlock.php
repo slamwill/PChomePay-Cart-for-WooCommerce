@@ -20,7 +20,7 @@ class PchomepayPi_Gateway_Blocks extends AbstractPaymentMethodType {
 
         wp_register_script(
             'pchomepay-blocks-integration',
-            plugin_dir_url(__FILE__) . 'pchomepayPiCheckout.js.js',
+            plugin_dir_url(__FILE__) . 'pchomepayPiCheckout.js',
             [
                 'wc-blocks-registry',
                 'wc-settings',
