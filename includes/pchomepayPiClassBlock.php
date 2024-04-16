@@ -5,7 +5,7 @@ use Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodTyp
 class PchomepayPi_Gateway_Blocks extends AbstractPaymentMethodType {
 
     private $gateway;
-    protected $name = 'pchomepay';// your payment gateway name
+    protected $name = 'pchomepayPi';// your payment gateway name
 
     public function initialize() {
         $this->settings = get_option( 'woocommerce_my_custom_gateway_settings', [] );
