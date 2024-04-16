@@ -1,17 +1,17 @@
-const settingsPi = window.wc.wcSettings.getSetting( 'pchomepay_pi_data', {} );
-const labelPi = window.wp.htmlEntities.decodeEntities( settingsPi.title ) || window.wp.i18n.__( 'Pchomepay Pi', 'pchomepay_pi' );
-const ContentPi = () => {
-    return window.wp.htmlEntities.decodeEntities( settingsPi.description || '' );
+const settingsPchomepayPi = window.wc.wcSettings.getSetting( 'pchomepay_pi_data', {} );
+const labelPchomepayPi = window.wp.htmlEntities.decodeEntities( settingsPchomepayPi.title ) || window.wp.i18n.__( 'Pchomepay Pi', 'pchomepay_pi' );
+const ContentPchomepayPi = () => {
+    return window.wp.htmlEntities.decodeEntities( settingsPchomepayPi.description || '' );
 };
-const Block_Gateway_Pi = {
+const BlockGatewayPchomepayPi = {
     name: 'pchomepay_pi',
-    label: labelPi,
-    content: Object( window.wp.element.createElement )( ContentPi, null ),
-    edit: Object( window.wp.element.createElement )( ContentPi, null ),
+    label: labelPchomepayPi,
+    content: Object( window.wp.element.createElement )( ContentPchomepayPi, null ),
+    edit: Object( window.wp.element.createElement )( ContentPchomepayPi, null ),
     canMakePayment: () => true,
-    ariaLabel: labelPi,
+    ariaLabel: labelPchomepayPi,
     supports: {
-        features: settingsPi.supports,
+        features: settingsPchomepayPi.supports,
     },
 };
-window.wc.wcBlocksRegistry.registerPaymentMethod( Block_Gateway_Pi );
+window.wc.wcBlocksRegistry.registerPaymentMethod( BlockGatewayPchomepayPi );
