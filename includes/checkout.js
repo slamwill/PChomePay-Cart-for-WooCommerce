@@ -1,4 +1,4 @@
-const settings = window.wc.wcSettings.getSetting( 'my_custom_gateway_data', {} );
+const settings = window.wc.wcSettings.getSetting( 'pchomepay_data', {} );
 // const label = window.wp.htmlEntities.decodeEntities( settings.title ) || window.wp.i18n.__( 'My Custom Gateway', 'my_custom_gateway' );
 // const label = window.wp.htmlEntities.decodeEntities( settings.title ) || window.wp.i18n.__( 'My Custom Gateway', 'pchomepay' );
 const label = window.wp.htmlEntities.decodeEntities( settings.title ) || window.wp.i18n.__( 'Pchomepay', 'pchomepay' );
