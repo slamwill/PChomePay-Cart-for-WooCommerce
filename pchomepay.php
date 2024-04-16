@@ -272,3 +272,30 @@ function add_custom_action_button_css() {
 
     echo '<style>.wc-action-button-'.$action_slug.'::after { font-family: woocommerce !important; content: "\e029" !important; }</style>';
 }
+
+// Hook the custom function to the 'woocommerce_blocks_loaded' action
+add_action( 'woocommerce_blocks_loaded', 'oawoo_register_order_approval_payment_method_type' );
+
+/**
+ * Custom function to register a payment method type
+
+ */
+function oawoo_register_order_approval_payment_method_type() {
+    // Check if the required class exists
+    if ( ! class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
+        return;
+    }
+
+    // Include the custom Blocks Checkout class
+    // require_once plugin_dir_path(__FILE__) . 'class-block.php';
+    include_once 'includes/class-block.php';
+
+    // Hook the registration function to the 'woocommerce_blocks_payment_method_type_registration' action
+    add_action(
+        'woocommerce_blocks_payment_method_type_registration',
+        function( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry ) {
+            // Register an instance of My_Custom_Gateway_Blocks
+            $payment_method_registry->register( new My_Custom_Gateway_Blocks );
+        }
+    );
+}
