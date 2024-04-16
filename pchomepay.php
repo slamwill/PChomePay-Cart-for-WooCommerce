@@ -197,6 +197,7 @@ add_action( 'woocommerce_blocks_loaded', 'oawoo_register_order_approval_payment_
 
  */
 function oawoo_register_order_approval_payment_method_type() {
+    error_log('www-check-oawoo_register_order_approval_payment_method_type');
     // Check if the required class exists
     if ( ! class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
         return;
