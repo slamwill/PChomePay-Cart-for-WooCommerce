@@ -3,11 +3,15 @@ const labelPchomepayPi = window.wp.htmlEntities.decodeEntities( settingsPchomepa
 const ContentPchomepayPi = () => {
     return window.wp.htmlEntities.decodeEntities( settingsPchomepayPi.description || '' );
 };
+const iconUrlPchomepayPi = '../images/pchomepay_logo.png';
 const BlockGatewayPchomepayPi = {
     name: 'pchomepay_pi',
     label: labelPchomepayPi,
     content: Object( window.wp.element.createElement )( ContentPchomepayPi, null ),
     edit: Object( window.wp.element.createElement )( ContentPchomepayPi, null ),
+    icons: {
+        src: iconUrlPchomepayPi,
+    },
     canMakePayment: () => true,
     ariaLabel: labelPchomepayPi,
     supports: {
