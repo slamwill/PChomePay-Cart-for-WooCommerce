@@ -1,15 +1,15 @@
 const settingsPi = window.wc.wcSettings.getSetting( 'pchomepay_pi_data', {} );
-const label = window.wp.htmlEntities.decodeEntities( settingsPi.title ) || window.wp.i18n.__( 'Pchomepay Pi', 'pchomepay_pi' );
+const labelPi = window.wp.htmlEntities.decodeEntities( settingsPi.title ) || window.wp.i18n.__( 'Pchomepay Pi', 'pchomepay_pi' );
 const Content = () => {
     return window.wp.htmlEntities.decodeEntities( settingsPi.description || '' );
 };
 const Block_Gateway = {
     name: 'pchomepay_pi',
-    label: label,
+    label: labelPi,
     content: Object( window.wp.element.createElement )( Content, null ),
     edit: Object( window.wp.element.createElement )( Content, null ),
     canMakePayment: () => true,
-    ariaLabel: label,
+    ariaLabel: labelPi,
     supports: {
         features: settingsPi.supports,
     },
