@@ -78,6 +78,14 @@ function pchomepay_gateway_init()
                 $payment_method_registry->register( new Pchomepay_Gateway_Blocks );
             }
         );
+
+        add_action(
+            'woocommerce_blocks_payment_method_type_registration',
+            function( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry ) {
+                // Register an instance of Pchomepay_Pi_Gateway_Blocks
+                $payment_method_registry->register( new Pchomepay_Pi_Gateway_Blocks );
+            }
+        );
     }
 
     add_action( 'woocommerce_blocks_loaded', 'pchomepay_register_order_approval_payment_method_type' );
