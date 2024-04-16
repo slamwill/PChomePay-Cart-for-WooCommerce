@@ -78,10 +78,28 @@ function pchomepay_gateway_init()
                 $payment_method_registry->register( new Pchomepay_Gateway_Blocks );
             }
         );
-
     }
 
     add_action( 'woocommerce_blocks_loaded', 'pchomepay_register_order_approval_payment_method_type' );
+
+    function pchomepay_pi_register_order_approval_payment_method_type() {
+        if ( ! class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
+            return;
+        }
+
+        // require_once plugin_dir_path(__FILE__) . 'class-block.php';
+        require_once 'includes/pchomepayPiClassBlock.php';
+        // Hook the registration function to the 'woocommerce_blocks_payment_method_type_registration' action
+        add_action(
+            'woocommerce_blocks_payment_method_type_registration',
+            function( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry ) {
+                // Register an instance of PchomepayPi_Gateway_Blocks
+                $payment_method_registry->register( new PchomepayPi_Gateway_Blocks );
+            }
+        );
+    }
+
+    add_action( 'woocommerce_blocks_loaded', 'pchomepay_pi_register_order_approval_payment_method_type' );
 }
 
 add_action('init', 'pchomepay_plugin_updater_init');
