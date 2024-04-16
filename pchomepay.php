@@ -49,18 +49,12 @@ function pchomepay_gateway_init()
 
     add_filter('woocommerce_thankyou_order_received_text', 'customize_order_received_text', 10, 2);
 
-
-    /**
-     * Custom function to declare compatibility with cart_checkout_blocks feature 
-    */
     function declare_cart_checkout_blocks_compatibility() {
-        // Check if the required class exists
         if (class_exists('\Automattic\WooCommerce\Utilities\FeaturesUtil')) {
-            // Declare compatibility for 'cart_checkout_blocks'
             \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('cart_checkout_blocks', __FILE__, true);
         }
     }
-    // Hook the custom function to the 'before_woocommerce_init' action
+
     add_action('before_woocommerce_init', 'declare_cart_checkout_blocks_compatibility');
 
     function pchomepay_register_order_approval_payment_method_type() {
@@ -68,13 +62,10 @@ function pchomepay_gateway_init()
             return;
         }
 
-        // require_once plugin_dir_path(__FILE__) . 'class-block.php';
         require_once 'includes/pchomepayClassBlock.php';
-        // Hook the registration function to the 'woocommerce_blocks_payment_method_type_registration' action
         add_action(
             'woocommerce_blocks_payment_method_type_registration',
             function( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry ) {
-                // Register an instance of Pchomepay_Gateway_Blocks
                 $payment_method_registry->register( new Pchomepay_Gateway_Blocks );
             }
         );
@@ -82,33 +73,15 @@ function pchomepay_gateway_init()
 
     add_action( 'woocommerce_blocks_loaded', 'pchomepay_register_order_approval_payment_method_type' );
 
-
-
-    /**
-     * Custom function to declare compatibility with cart_checkout_blocks feature 
-    */
-    // function declare_cart_checkout_blocks_1_compatibility() {
-    //     // Check if the required class exists
-    //     if (class_exists('\Automattic\WooCommerce\Utilities\FeaturesUtil')) {
-    //         // Declare compatibility for 'cart_checkout_blocks'
-    //         \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('cart_checkout_blocks', __FILE__, true);
-    //     }
-    // }
-    // // Hook the custom function to the 'before_woocommerce_init' action
-    // add_action('before_woocommerce_init', 'declare_cart_checkout_blocks_1_compatibility');
-
     function pchomepay_pi_register_order_approval_payment_method_type() {
         if ( ! class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
             return;
         }
 
-        // require_once plugin_dir_path(__FILE__) . 'class-block.php';
         require_once 'includes/pchomepayPiClassBlock.php';
-        // Hook the registration function to the 'woocommerce_blocks_payment_method_type_registration' action
         add_action(
             'woocommerce_blocks_payment_method_type_registration',
             function( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry ) {
-                // Register an instance of PchomepayPi_Gateway_Blocks
                 $payment_method_registry->register( new PchomepayPi_Gateway_Blocks );
             }
         );
