@@ -187,6 +187,35 @@ function add_awaiting_pchomepay_audit_order_statuses($order_statuses)
     return $new_order_statuses;
 }
 
+
+
+// Hook the custom function to the 'woocommerce_blocks_loaded' action
+add_action( 'woocommerce_blocks_loaded', 'oawoo_register_order_approval_payment_method_type' );
+
+/**
+ * Custom function to register a payment method type
+
+ */
+function oawoo_register_order_approval_payment_method_type() {
+    // Check if the required class exists
+    if ( ! class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
+        return;
+    }
+
+    // Include the custom Blocks Checkout class
+    // require_once plugin_dir_path(__FILE__) . 'class-block.php';
+    include_once 'includes/class-block.php';
+
+    // Hook the registration function to the 'woocommerce_blocks_payment_method_type_registration' action
+    add_action(
+        'woocommerce_blocks_payment_method_type_registration',
+        function( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry ) {
+            // Register an instance of Pchomepay_Gateway_Blocks
+            $payment_method_registry->register( new Pchomepay_Gateway_Blocks );
+        }
+    );
+}
+
 // 顧客訂單頁面 7-11物流歷程查詢
 add_filter( 'woocommerce_my_account_my_orders_actions', 'add_my_account_my_orders_custom_action', 10, 2 );
 function add_my_account_my_orders_custom_action( $actions, $order ) {
@@ -271,31 +300,4 @@ function add_custom_action_button_css() {
     <?php
 
     echo '<style>.wc-action-button-'.$action_slug.'::after { font-family: woocommerce !important; content: "\e029" !important; }</style>';
-}
-
-// Hook the custom function to the 'woocommerce_blocks_loaded' action
-add_action( 'woocommerce_blocks_loaded', 'oawoo_register_order_approval_payment_method_type' );
-
-/**
- * Custom function to register a payment method type
-
- */
-function oawoo_register_order_approval_payment_method_type() {
-    // Check if the required class exists
-    if ( ! class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
-        return;
-    }
-
-    // Include the custom Blocks Checkout class
-    // require_once plugin_dir_path(__FILE__) . 'class-block.php';
-    include_once 'includes/class-block.php';
-
-    // Hook the registration function to the 'woocommerce_blocks_payment_method_type_registration' action
-    add_action(
-        'woocommerce_blocks_payment_method_type_registration',
-        function( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry ) {
-            // Register an instance of Pchomepay_Gateway_Blocks
-            $payment_method_registry->register( new Pchomepay_Gateway_Blocks );
-        }
-    );
 }
