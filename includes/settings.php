@@ -31,7 +31,7 @@ return array(
         'title' => __('Description', 'woocommerce'),
         'type' => 'textarea',
         'description' => __('This controls the description which the user sees during checkout.', 'woocommerce'),
-        'default' => __('透過 PChomePay支付連 付款，會連結到 PChomePay支付連 付款頁面。', 'woocommerce'),
+        'default' => __('settings.php 透過 PChomePay支付連 付款，會連結到 PChomePay支付連 付款頁面。', 'woocommerce'),
     ),
     'test_mode' => array(
         'title' => __('測試模式', 'woocommerce'),
