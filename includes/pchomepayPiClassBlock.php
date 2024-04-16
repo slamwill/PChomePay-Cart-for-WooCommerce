@@ -19,7 +19,7 @@ class PchomepayPi_Gateway_Blocks extends AbstractPaymentMethodType {
     public function get_payment_method_script_handles() {
 
         wp_register_script(
-            'pchomepay-blocks-integration',
+            'pchomepay-pi-blocks-integration',
             plugin_dir_url(__FILE__) . 'pchomepayPiCheckout.js',
             [
                 'wc-blocks-registry',
@@ -32,10 +32,10 @@ class PchomepayPi_Gateway_Blocks extends AbstractPaymentMethodType {
             true
         );
         if( function_exists( 'wp_set_script_translations' ) ) {            
-            wp_set_script_translations( 'pchomepay-blocks-integration');
+            wp_set_script_translations( 'pchomepay-pi-blocks-integration');
             
         }
-        return [ 'pchomepay-blocks-integration' ];
+        return [ 'pchomepay-pi-blocks-integration' ];
     }
     public function get_payment_method_data() {
         return [
