@@ -40,7 +40,7 @@ class WC_Gateway_PChomePay extends WC_Payment_Gateway
         $this->icon = apply_filters('woocommerce_pchomepay_icon', plugins_url('images/pchomepay_logo.png', dirname(__FILE__)));
         $this->has_fields = false;
         $this->method_title = __('PChomePay支付連', 'woocommerce');
-        $this->method_description = 'PChomePayGateway.php 透過 PChomePay支付連 付款，會連結到 PChomePay支付連 付款頁面。';
+        $this->method_description = '透過 PChomePay支付連 付款，會連結到 PChomePay支付連 付款頁面。';
         $this->supports = array('products', 'refunds');
 
         $this->init_form_fields();
