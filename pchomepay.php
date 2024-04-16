@@ -64,15 +64,12 @@ function pchomepay_gateway_init()
     add_action('before_woocommerce_init', 'declare_cart_checkout_blocks_compatibility');
 
     function pchomepay_register_order_approval_payment_method_type() {
-        // Check if the required class exists
         if ( ! class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
             return;
         }
 
-        // Include the custom Blocks Checkout class
         // require_once plugin_dir_path(__FILE__) . 'class-block.php';
         require_once 'includes/class-block.php';
-
         // Hook the registration function to the 'woocommerce_blocks_payment_method_type_registration' action
         add_action(
             'woocommerce_blocks_payment_method_type_registration',
