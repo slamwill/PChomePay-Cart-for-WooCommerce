@@ -37,7 +37,8 @@ class WC_Gateway_PChomePay extends WC_Payment_Gateway
         }
 
         $this->id = 'pchomepay';
-        $this->icon = apply_filters('woocommerce_pchomepay_icon', plugins_url('images/pchomepay_logo.png', dirname(__FILE__)));
+        // $this->icon = apply_filters('woocommerce_pchomepay_icon', plugins_url('images/pchomepay_logo.png', dirname(__FILE__)));
+        $this->icon = apply_filters('woocommerce_gateway_icon', plugin_dir_url(__FILE__) . 'images/pchomepay_logo.png');
         $this->has_fields = false;
         $this->method_title = __('PChomePay支付連', 'woocommerce');
         $this->method_description = '透過 PChomePay支付連 付款，會連結到 PChomePay支付連 付款頁面。';
