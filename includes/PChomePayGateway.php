@@ -109,8 +109,8 @@ class WC_Gateway_PChomePay extends WC_Payment_Gateway
     {
         global $woocommerce;
 
-        // $order_id = 'AW' . date('Ymd') . $order->get_order_number();
-        $order_id = 'AW' . date('YmdHis') . $order->get_order_number();
+        $order_id = 'AW' . date('Ymd') . $order->get_order_number();
+        // $order_id = 'AW' . date('YmdHis') . $order->get_order_number();
         $pay_type = $this->payment_methods;
         $amount = ceil($order->get_total());
         $returnUrl = $this->get_return_url($order);
@@ -593,8 +593,8 @@ class WC_PI_Gateway_PChomePay extends WC_Gateway_PChomePay
     {
         global $woocommerce;
 
-        // $order_id = 'AW' . date('Ymd') . $order->get_order_number();
-        $order_id = 'AW' . date('YmdHis') . $order->get_order_number();
+        $order_id = 'AW' . date('Ymd') . $order->get_order_number();
+        // $order_id = 'AW' . date('YmdHis') . $order->get_order_number();
         $pay_type = ['PI'];
         $amount = ceil($order->get_total());
         $returnUrl = $this->get_return_url($order);
