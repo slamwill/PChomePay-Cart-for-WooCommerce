@@ -554,10 +554,13 @@ class WC_PI_Gateway_PChomePay extends WC_Gateway_PChomePay
         $this->has_fields = false;
         $this->method_title = __('PChomePay PI-拍錢包', 'woocommerce');
         $this->method_description = '透過 PChomePay PI-拍錢包 付款，會連結到 PChomePay PI-拍錢包 付款頁面。';
+
         $this->init_form_fields();
         $this->init_settings();
+
         $this->title = __('PChomePay PI-拍錢包', 'woocommerce');
         $this->description = __('透過 PChomePay PI-拍錢包 付款，會連結到 PChomePay PI-拍錢包 付款頁面。', 'woocommerce');
+
         if (empty($this->app_id) || empty($this->secret)) {
             $this->enabled = false;
         } else {

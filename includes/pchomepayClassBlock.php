@@ -8,7 +8,6 @@ class Pchomepay_Gateway_Blocks extends AbstractPaymentMethodType {
     protected $name = 'pchomepay';// your payment gateway name
 
     public function initialize() {
-        error_log('www-check-pchomepayClassBlock of initialize');
         $this->settings = get_option( 'woocommerce_my_custom_gateway_settings', [] );
         $this->gateway = new WC_Gateway_PChomePay();
     }
@@ -38,9 +37,7 @@ class Pchomepay_Gateway_Blocks extends AbstractPaymentMethodType {
         }
         return [ 'pchomepay-blocks-integration' ];
     }
-    public function get_payment_method_data() {
-        error_log('www-check-pchomepayClassBlock of get_payment_method_data title ' . json_encode($this->gateway->title));
-        error_log('www-check-pchomepayClassBlock of get_payment_method_data description ' . json_encode($this->gateway->description));
+    public function get_payment_method_data() { description ' . json_encode($this->gateway->description));
         return [
             'title' => $this->gateway->title,
             'description' => $this->gateway->description,
