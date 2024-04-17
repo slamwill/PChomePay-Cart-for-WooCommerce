@@ -3,7 +3,6 @@ const labelPchomepay = window.wp.htmlEntities.decodeEntities( settingsPchomepay.
 const ContentPchomepay = () => {
     return window.wp.htmlEntities.decodeEntities( settingsPchomepay.description || '' );
 };
-console.log('settingsPchomepay is ' + settingsPchomepay);
 const BlockGatewayPchomepay = {
     name: 'pchomepay',
     label: labelPchomepay,

@@ -8,15 +8,18 @@ class PchomepayPi_Gateway_Blocks extends AbstractPaymentMethodType {
     protected $name = 'pchomepay_pi';// your payment gateway name
 
     public function initialize() {
+        error_log('www-check-pchomepayPiClassBlock of initialize');
         $this->settings = get_option( 'woocommerce_my_custom_gateway_settings', [] );
         $this->gateway = new WC_PI_Gateway_PChomePay();
     }
 
     public function is_active() {
+        error_log('www-check-pchomepayPiClassBlock of is_active');
         return $this->gateway->is_available();
     }
 
     public function get_payment_method_script_handles() {
+        error_log('www-check-pchomepayPiClassBlock of get_payment_method_script_handles');
 
         wp_register_script(
             'pchomepay-pi-blocks-integration',
@@ -38,6 +41,8 @@ class PchomepayPi_Gateway_Blocks extends AbstractPaymentMethodType {
         return [ 'pchomepay-pi-blocks-integration' ];
     }
     public function get_payment_method_data() {
+        error_log('www-check-pchomepayPiClassBlock of get_payment_method_data title ' . $this->gateway->title);
+        error_log('www-check-pchomepayPiClassBlock of get_payment_method_data description ' . $this->gateway->description);
         return [
             'title' => $this->gateway->title,
             'description' => $this->gateway->description,
