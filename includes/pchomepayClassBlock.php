@@ -37,7 +37,7 @@ class Pchomepay_Gateway_Blocks extends AbstractPaymentMethodType {
         }
         return [ 'pchomepay-blocks-integration' ];
     }
-    public function get_payment_method_data() { description ' . json_encode($this->gateway->description));
+    public function get_payment_method_data() {
         return [
             'title' => $this->gateway->title,
             'description' => $this->gateway->description,
