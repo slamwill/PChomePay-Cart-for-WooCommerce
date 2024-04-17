@@ -24,7 +24,7 @@ return array(
         'title' => __('Title', 'woocommerce'),
         'type' => 'text',
         'description' => __('This controls the title which the user sees during checkout.', 'woocommerce'),
-        'default' => __('PChomePay', 'woocommerce'),
+        'default' => __('PChomePay From settings.php', 'woocommerce'),
         'desc_tip' => true,
     ),
     'description' => array(
