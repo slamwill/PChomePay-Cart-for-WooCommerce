@@ -14,12 +14,10 @@ class PchomepayPi_Gateway_Blocks extends AbstractPaymentMethodType {
     }
 
     public function is_active() {
-        error_log('www-check-pchomepayPiClassBlock of is_active');
         return $this->gateway->is_available();
     }
 
     public function get_payment_method_script_handles() {
-        error_log('www-check-pchomepayPiClassBlock of get_payment_method_script_handles');
 
         wp_register_script(
             'pchomepay-pi-blocks-integration',
