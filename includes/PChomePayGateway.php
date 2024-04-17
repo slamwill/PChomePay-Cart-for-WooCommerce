@@ -557,6 +557,8 @@ class WC_PI_Gateway_PChomePay extends WC_Gateway_PChomePay
 
         $this->init_form_fields();
         $this->init_settings();
+        $this->title = $this->get_option('title');
+        $this->description = $this->get_option('description');
 
         if (empty($this->app_id) || empty($this->secret)) {
             $this->enabled = false;
