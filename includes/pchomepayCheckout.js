@@ -10,7 +10,7 @@ const BlockGatewayPchomepay = {
             "span",
             null,
             window.wp.element.createElement("img", {
-                src: myCustomData.pluginPath + 'pchomepay_logo.png',
+                src: myImagePath.pluginPath + 'pchomepay_logo.png',
                 alt: settingsPchomepay.title,
             }),
             "  " + settingsPchomepay.title

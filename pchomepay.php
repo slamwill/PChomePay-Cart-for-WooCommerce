@@ -91,12 +91,12 @@ function pchomepay_gateway_init()
 
     function checkout_enqueue_scripts() {
         wp_enqueue_script('pchomepayCheckout', plugin_dir_url(__FILE__) . 'include/pchomepayCheckout.js', array('wp-element'), '1.0', true);
-        wp_localize_script('pchomepayCheckout', 'myCustomData', array(
+        wp_localize_script('pchomepayCheckout', 'myImagePath', array(
             'pluginPath' => plugin_dir_url(__FILE__) . 'images/'
         ));
 
         wp_enqueue_script('pchomepayPiCheckout', plugin_dir_url(__FILE__) . 'include/pchomepayPiCheckout.js', array('wp-element'), '1.0', true);
-        wp_localize_script('pchomepayPiCheckout', 'myCustomData', array(
+        wp_localize_script('pchomepayPiCheckout', 'myImagePath', array(
             'pluginPath' => plugin_dir_url(__FILE__) . 'images/'
         ));
     }
