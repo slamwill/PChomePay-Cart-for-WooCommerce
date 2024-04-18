@@ -5,7 +5,6 @@ const ContentPchomepayPi = () => {
 };
 const BlockGatewayPchomepayPi = {
     name: 'pchomepay_pi',
-    // label: labelPchomepayPi,
     label: window.wp.element.createElement(() =>
         window.wp.element.createElement(
             "span",
