@@ -5,7 +5,18 @@ const ContentPchomepay = () => {
 };
 const BlockGatewayPchomepay = {
     name: 'pchomepay',
-    label: labelPchomepay,
+    // label: labelPchomepay,
+    label: window.wp.element.createElement(() =>
+        window.wp.element.createElement(
+            "span",
+            null,
+            window.wp.element.createElement("img", {
+                src: myCustomData.pluginPath + 'pchomepay_logo.png',
+                alt: settingsPchomepay.title,
+            }),
+            "  " + settingsPchomepay.title
+        )
+    ),
     content: Object( window.wp.element.createElement )( ContentPchomepay, null ),
     edit: Object( window.wp.element.createElement )( ContentPchomepay, null ),
     canMakePayment: () => true,

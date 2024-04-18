@@ -5,7 +5,18 @@ const ContentPchomepayPi = () => {
 };
 const BlockGatewayPchomepayPi = {
     name: 'pchomepay_pi',
-    label: labelPchomepayPi,
+    // label: labelPchomepayPi,
+    label: window.wp.element.createElement(() =>
+        window.wp.element.createElement(
+            "span",
+            null,
+            window.wp.element.createElement("img", {
+                src: myCustomData.pluginPath + 'pchomepay_logo.png',
+                alt: settingsPchomepayPi.title,
+            }),
+            "  " + settingsPchomepayPi.title
+        )
+    ),
     content: Object( window.wp.element.createElement )( ContentPchomepayPi, null ),
     edit: Object( window.wp.element.createElement )( ContentPchomepayPi, null ),
     canMakePayment: () => true,

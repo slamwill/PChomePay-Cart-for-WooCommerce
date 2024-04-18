@@ -88,6 +88,19 @@ function pchomepay_gateway_init()
     }
 
     add_action( 'woocommerce_blocks_loaded', 'pchomepay_pi_register_order_approval_payment_method_type' );
+
+    function checkout_enqueue_scripts() {
+        wp_enqueue_script('pchomepayCheckout', plugin_dir_url(__FILE__) . 'include/pchomepayCheckout.js', array('wp-element'), '1.0', true);
+        wp_localize_script('pchomepayCheckout', 'myCustomData', array(
+            'pluginPath' => plugin_dir_url(__FILE__) . 'images/'
+        ));
+
+        wp_enqueue_script('pchomepayPiCheckout', plugin_dir_url(__FILE__) . 'include/pchomepayPiCheckout.js', array('wp-element'), '1.0', true);
+        wp_localize_script('pchomepayPiCheckout', 'myCustomData', array(
+            'pluginPath' => plugin_dir_url(__FILE__) . 'images/'
+        ));
+    }
+    add_action('wp_enqueue_scripts', 'checkout_enqueue_scripts');
 }
 
 add_action('init', 'pchomepay_plugin_updater_init');
